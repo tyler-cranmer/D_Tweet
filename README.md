@@ -3,6 +3,7 @@
 ### Make sure python3 is installed.
 #### Create and Activate Virtual Environment
 python3 -m venv venv
+
 source venv/bin/activate 
 
 #### Install discord.py
