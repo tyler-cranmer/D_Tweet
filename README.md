@@ -1,8 +1,15 @@
 # Discord Twitter Tweet Bot
 
-### Make sure python3 is installed.
-### python3 -m venv venv
-### source venv/bin/activate 
-    To activate virtual environment.
-### pip install discord.py
-### pip install tweepy
+#### Make sure python3 is installed.
+### Create and Activate Virtual Environment
+python3 -m venv venv
+
+source venv/bin/activate 
+
+### Install discord.py
+
+pip install discord.py
+
+### Install tweepy 
+
+pip install tweepy
