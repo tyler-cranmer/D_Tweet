@@ -1,5 +1,6 @@
 import tweepy
 import config
+import requests
 import json
 from time import sleep
 
@@ -24,16 +25,19 @@ class MyStream(tweepy.StreamingClient):
 
     def on_tweet(self, tweet):
         # if tweet.referenced_tweets == None: //this will filter out retweet. need to call with params -> stream.filter(tweet_fields=["referenced_tweets"])
-        print(tweet.id)
-        print(tweet.text)
-        return tweet.id
-
-
+        # print(tweet.id)
+        # print(tweet.text)
+        pay_load = {
+        "content": "https://twitter.com/NFF33T/status/" + f'{tweet.id}'
+        }
+        try:
+            r = requests.post(config.WebHookApi, data=pay_load)
+        except:
+            print("Webhook request failed")
 
 if __name__ == '__main__':
 
-    bearer_token=config.BEARER_TOKEN
+    bearer_token=config.NFF33T_BEARER_TOKEN
     stream = MyStream(bearer_token=bearer_token)
-    # stream.add_rules(tweepy.StreamRule('from:0xNeferfeeti'))
-    print(stream.get_rules())
+    # stream.add_rules(tweepy.StreamRule('from:NFF33T'))
     stream.filter()
